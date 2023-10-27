@@ -3,7 +3,7 @@ require "../vendor/autoload.php";
 
 use Jorge\QrGenerator\QrBuilder;
 
-$qr1 = QrBuilder::create("texto del codigo QR","Etiqueta del QR","qr1");
+$qr1 = QrBuilder::create($_POST["data"],$_POST["label"],$_POST["filename"]);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,6 +14,9 @@ $qr1 = QrBuilder::create("texto del codigo QR","Etiqueta del QR","qr1");
 </head>
 <body>
     <h1>Generador de codigo QR</h1>
-    <img src="img/qr1.png" alt="texto del codigo QR">
+    <p>
+        El QR generado para <?=$_POST["data"]; ?>
+    </p>
+    <img src="img/<?=$_POST["filename"]; ?>.png" alt="<?=$_POST["data"]; ?>">
 </body>
 </html>
